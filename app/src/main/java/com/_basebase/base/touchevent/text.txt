@@ -1,0 +1,20 @@
+onTouchEvent
+一般ViewGroup和View需要设置可点击(setClickable(true)) 才可接受到 ACTION_MOVE和ACTION_UP事件,
+不设置的话一般只会接受到ACTION_DOWN事件
+
+设置了setClickable(true)一般(底部View不重写onTouchEvent)会被底部View的onTouchEvent消费掉事件不会往上传了
+
+ViewGroup源码中dispatchTouchEvent中会判断执行onInterceptTouchEvent方法
+    只要子View getParent().requestDisallowInterceptTouchEvent(true);设置了标志就不会执行此方法
+
+View源码中dispatchTouchEvent中会判断执行mOnTouchListener.onTouch比onTouchEvent先
+    所以是OnTouchListener比onTouchEvent先拿到触摸事件,消费的话就不会执行onTouchEvent
+
+请注意一般可以滑动的view默认是onInterceptTouchEvent返回true,就是一般滑动会被拦截
+
+触摸事件一般由顶部往下传(不做消费事件处理,以下执行事件方法)
+ViewGroup dispatchTouchEvent
+ViewGroup onInterceptTouchEvent
+View dispatchTouchEvent
+View onTouchEvent
+ViewGroup onTouchEvent
