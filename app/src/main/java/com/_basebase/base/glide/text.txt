@@ -1,0 +1,35 @@
+https://github.com/bumptech/glide
+
+
+ARGB_8888 :32位图,带透明度,每个像素占4个字节
+ARGB_4444 :16位图,带透明度,每个像素占2个字节
+RGB_565 :16位图,不带透明度,每个像素占2个字节
+ALPHA_8 :32位图,只有透明度,不带颜色,每个像素占4个字节
+(A代表透明度,RGB代表红绿蓝:即颜色)
+
+Picasso的默认质量是 ARGB_8888 
+Glide的默认质量则为 RGB_565
+
+Glide    Picasso    fresco
+google   square     facebook
+
+
+Glide和Picasso使用简单    fresco需要使用它的布局(android4.0以下使用native内存 不至于内存OOM)
+
+
+
+Glide:优点 会缓存图片,会进行压缩处理,可以显示Gif,有生命周期方法   (比如:200*200图片显示到100*100的ImageView上会压缩图片)
+
+生命周期通过Activity和Fragment里的FragmentManager添加一个SupportRequestManagerFragment 来达到监听onStart,onStop方法
+
+
+Glide:图片处理显示框架
+
+使用:
+    Glide.with(this).load("http://goo.gl/gEgYUd").into(imageView);
+
+
+
+
+Glide 类
+    创建各种线程池(加载源数据,图片缓存,动画加载),

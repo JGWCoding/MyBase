@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/del"
+        android:src="@drawable/delete_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+    <TextView
+        android:id="@+id/title"
+        android:text="Labour Type"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:layout_width="0dp"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:text="1"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+    <TextView
+        android:text="-"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_width="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="20dp"/>
+</LinearLayout>

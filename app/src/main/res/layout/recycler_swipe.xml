@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.zw_engineering.ui.view.SwipeItemLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <include layout="@layout/recycler_search_item"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/view"
+            android:text="View"
+            android:textSize="14sp"
+            android:layout_width="80dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/delete"
+            android:text="delete"
+            android:textSize="14sp"
+            android:layout_width="80dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</com.example.zw_engineering.ui.view.SwipeItemLayout>

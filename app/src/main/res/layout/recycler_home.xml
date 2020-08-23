@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/home_item_yellow"
+    android:layout_marginVertical="3dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="0dp"
+        android:gravity="center_vertical"
+        android:layout_height="35dp">
+        <TextView
+            android:text="Report ID"
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/home_item_id"
+            android:layout_marginHorizontal="10dp"
+            android:hint="3301/2019/10/12"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:text="In-charge"
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/home_item_charge"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Tom Cheung"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginHorizontal="5dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+        <TextView
+            android:text="Working Hours"
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/home_item_hours"
+            android:layout_marginHorizontal="10dp"
+            android:hint="CLP Ducting Works"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginHorizontal="5dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_vertical"
+        android:layout_height="30dp">
+        <TextView
+            android:text="Work area/Items"
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/home_item_area"
+            android:layout_marginHorizontal="10dp"
+            android:hint="sadfasdfasdfTom sadfasdfasdfasdfasdf"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/home_item_view"
+        android:text="View"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="10dp"
+        android:background="#F49200"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"/>
+</LinearLayout>

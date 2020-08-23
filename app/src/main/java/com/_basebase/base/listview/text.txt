@@ -1,0 +1,6 @@
+
+简单用法:
+String[] data = { "Apple", "Banana", "Orange", "Mango" };
+      ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+             this, android.R.layout.simple_list_item_1, data);
+      listview.setAdapter(adapter);

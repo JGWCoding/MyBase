@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.example.zw_engineering"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    signingConfigs {
+        release {
+            storeFile file("../dome.jks")
+            storePassword "123456"
+            keyAlias "china"
+            keyPassword "123456"
+//            v2SigningEnabled false
+        }
+    }
+    dexOptions {
+        //在project中导入了大量的第三方包，导致内存过大，在编译的时候出现的OOM，
+        javaMaxHeapSize "4g"
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->    //以前的each改为all
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "engineering_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk"
+                outputFileName = fileName    //对输出文件名直接赋值,不用new File
+            }
+        }
+    }
+    buildTypes {
+        release {
+            multiDexEnabled false
+            minifyEnabled true // 混淆
+            zipAlignEnabled true // Zipalign优化
+            shrinkResources true  // 移除无用的resource文件
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            aaptOptions.cruncherEnabled = false
+            aaptOptions.useNewCruncher = false
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.contrarywind:Android-PickerView:4.1.8'
+//https://github.com/Bigkoo/Android-PickerView
+//    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'//glide图片展示框架
+    //implementation 'com.tencent.bugly:crashreport:latest.release' //bugly
+//    implementation 'org.greenrobot:greendao:3.2.2' // greendao数据库
+    implementation 'com.blankj:utilcodex:1.26.0'
+//    implementation 'com.blankj:utilcode:1.26.0' //Utils
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'//recycler adapter
+//    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3' //图片选择器 https://gitee.com/landiao_tb/PictureSelector
+//    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.4.6' //图片选择器
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
+//debug leakcanary 内存泄漏检测
+    implementation("com.squareup.okhttp3:okhttp:4.1.1") //okhttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.1.1' //okhttp interceptor
+//    implementation 'com.squareup.retrofit2:retrofit:2.6.1'// https://github.com/square/retrofit
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0-rc02'
+    implementation 'androidx.navigation:navigation-ui:2.0.0-rc02'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+}

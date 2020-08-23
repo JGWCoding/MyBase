@@ -1,0 +1,64 @@
+java 和 js 交互
+
+
+WebView的使用
+    WebView  webView= (WebView) findViewById(R.id.webview);
+    webView.loadUrl("file:///android_asset/index.html");//可以文件或者网址
+
+    //开启js交互
+    WebSettings settings = webView.getSettings();
+    settings.setJavaScriptEnabled(true);
+
+
+    //java中调用js方法
+    mWebView.loadUrl("javascript:alertTest()");
+    //java中调用js方法 这个为获取返回值api
+    mWebView.evaluateJavascript("javascript:alertTest()", new ValueCallback<String>() {
+                  @Override
+                  public void onReceiveValue(String value) {
+                      Toast.makeText(WebViewActivity.this, value, Toast.LENGTH_SHORT).show();
+                  }
+              });
+
+
+    //js调用java代码
+    class JsObject {
+        @JavascriptInterface
+        public String toString() {
+
+            return "injectedObject";
+
+        }
+    }
+
+    webView.addJavascriptInterface(new JsObject(), "injectedObject"); // 只有页面再加载，该对象才可见
+    webView.loadData("", "text/html", null);
+    webView.loadUrl("javascript:alert(injectedObject.toString())");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://segmentfault.com/a/1190000011487440

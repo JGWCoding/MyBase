@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:layout_marginVertical="5dp"
+    android:divider="#0DF40500"
+    android:focusableInTouchMode="true"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/labour2_recycler_del"
+        android:src="@drawable/delete_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:id="@+id/labour2_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1.4"
+        android:drawableRight="@drawable/arrow_down"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:hint="Labour Type"
+        android:textColorHint="@color/gray_55"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/labour2_quantity"
+        android:hint="Quantity"
+        android:layout_weight="1"
+        android:background="@null"
+        android:focusable="true"
+        android:textSize="14sp"
+        android:inputType="number"
+        android:textColorHint="@color/gray_55"
+        android:textColor="@color/black"
+        android:focusableInTouchMode="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="0dp"
+        android:singleLine="true"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/labour2_owner"
+        android:hint="Owner"
+        android:layout_weight="1"
+        android:background="@null"
+        android:textColorHint="@color/gray_55"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginHorizontal="10dp"
+        android:singleLine="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

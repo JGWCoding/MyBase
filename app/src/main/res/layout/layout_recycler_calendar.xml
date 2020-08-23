@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="5dp"
+    android:background="@drawable/description_background"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Report Type"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/calendar_item_report_type"
+            android:textSize="14sp"
+            android:hint="CLP Ducting Works"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="14sp"
+            android:text="Working Hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/calendar_item_dayHour"
+            android:enabled="false"
+            android:hint="08:00-18:00"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="14sp"
+            android:text="Working Hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/calendar_item_nightHour"
+            android:textSize="14sp"
+            android:enabled="false"
+            android:hint="01:30-07:30"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:background="@null"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Work area/Items"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/calendar_item_area"
+            android:hint="W/A 3301 to 3301/6;along north Perimenter Podsafasdf"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

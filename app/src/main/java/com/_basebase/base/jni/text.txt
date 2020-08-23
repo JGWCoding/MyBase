@@ -1,0 +1,26 @@
+NDK:Native Develop Kit
+    使用NDK优缺点(缺点是比较复杂):
+        1、在平台之间移植其应用
+        2、重复使用现在库，或者提供其自己的库重复使用
+        3、在某些情况下提性能，特别是像游戏这种计算密集型应用
+        4、使用第三方库，现在许多第三方库都是由C/C++库编写的，比如Ffmpeg这样库。
+        5、不依赖于Dalvik Java虚拟机的设计
+        6、代码的保护。由于APK的Java层代码很容易被反编译，而C/C++库反编译难度大。
+
+JNI:Java Native Interface
+    JNI是Java调用Native 语言的一种特性。通过JNI可以使得Java与C/C++机型交互。
+
+JNI下一共涉及到三个角色：C/C++代码、本地方法接口类、Java层中具体业务类。
+
+JNI的命名规则:
+    JNIExport jstring JNICALL Java_com_example_hellojni_MainActivity_stringFromJNI( JNIEnv* env,jobject thiz )
+        jstring 是返回值类型
+        Java_com_example_hellojni 是包名
+        MainActivity 是类名
+        stringFromJNI 是方法名
+
+        其中JNIExport和JNICALL是不固定保留的关键字不要修改
+
+(Android.mk文件)利用cMake工具生成.so库(动态库)
+
+https://www.jianshu.com/p/87ce6f565d37

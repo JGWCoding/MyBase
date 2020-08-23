@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E91F1F</color>
+    <color name="colorPrimaryDark">#E91F1F</color>
+    <color name="colorAccent">#E91F1F</color>
+
+    <color name="gray">#49494B</color>
+    <!--签名图片背景色-->
+    <color name="gray_55">#FF888888</color>
+    <color name="font_red">#830035</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="yellow">#F49200</color>
+    <color name="red">#DDE91F1F</color>
+    <color name="yellow_aplah33">#C7EDCC</color>
+</resources>

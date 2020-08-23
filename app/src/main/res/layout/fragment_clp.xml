@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="15dp"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/clp_fragment_back"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/back_arrow"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:id="@+id/clp_fragment_title"
+        android:layout_toRightOf="@id/clp_fragment_back"
+        android:text="CLP Ducting Works"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/red"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"/>
+    <TextView
+        android:id="@+id/clp_fragment_save"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:text="Save"
+        android:background="@color/red"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_width="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:id="@+id/clp_fragment_img"
+        android:layout_toLeftOf="@id/clp_fragment_save"
+        android:text="Add Photo"
+        android:gravity="center_vertical"
+        android:textColor="@color/red"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="2dp"
+        android:background="@drawable/bg_red_rectangle"
+        android:drawableRight="@android:drawable/ic_menu_camera"
+        android:layout_width="wrap_content"
+        android:minWidth="80dp"
+        android:layout_height="30dp"/>
+        <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/clp_fragment_back"
+            android:id="@+id/clp_fragment_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/clp_fragment_tabs"
+        android:id="@+id/clp_fragment_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

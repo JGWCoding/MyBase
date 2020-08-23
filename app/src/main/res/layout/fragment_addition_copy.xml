@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Date"/>
+
+        <TextView
+            android:id="@+id/add_fragment_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:minWidth="100dp"
+            android:ellipsize="middle"
+            android:maxWidth="220dp"
+            android:text="Date" />
+
+        <ImageView
+            android:id="@+id/add_fragment_calendar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/calendar_icon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="20dp"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/add_fragment_save"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/save_icon" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:text="Working Hours" />
+
+        <TextView
+            android:id="@+id/add_fragment_hour1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:gravity="center_vertical"
+            android:hint="08:00-18:00" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Working Hours"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/add_fragment_hour2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:paddingLeft="10dp"
+            android:hint="01:30-07:30" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:text="Weather" />
+
+        <TextView
+            android:id="@+id/add_fragment_weather1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:hint="Weather" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text="Weather" />
+
+        <TextView
+            android:id="@+id/add_fragment_weather2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:paddingLeft="10dp"
+            android:hint="Weather" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="Work Area / Items" />
+
+        <EditText
+            android:id="@+id/add_fragment_area"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:hint="Work Area / Items" />
+    </LinearLayout>>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="Add Report Type" />
+
+        <EditText
+            android:id="@+id/add_fragment_report_type"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:singleLine="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxWidth="200dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:hint="Add Report Type" />
+
+    <ImageView
+        android:padding="5dp"
+        android:id="@+id/add_fragment_add"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:gravity="right"
+        app:srcCompat="@drawable/add_icon" />
+    </LinearLayout>>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/add_fragment_recycler"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginBottom="10dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/add_fragment_clp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:background="@color/red"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            android:text="CLP Ducting Works" />-->
+
+<!--        <ImageView-->
+<!--            android:src="@drawable/delete_icon"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"/>-->
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginBottom="10dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:background="@color/red"-->
+<!--            android:singleLine="true"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            android:maxWidth="320dp"-->
+<!--            android:text="Communication System Ducting Works" />-->
+
+<!--        <ImageView-->
+<!--            android:src="@drawable/delete_icon"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"/>-->
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginBottom="10dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:background="@color/red"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            android:maxLines="1"-->
+<!--            android:ellipsize="end"-->
+<!--            android:text="Miscellaneous Works(Survey/Trail Pit/Underground Utilities sadfasdfasdfasd)" />-->
+
+<!--        <ImageView-->
+<!--            android:src="@drawable/delete_icon"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"/>-->
+<!--    </LinearLayout>-->
+</LinearLayout>
