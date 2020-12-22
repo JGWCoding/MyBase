@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.myapplicationdome.view.recycler_pull_upanddown.RelativeWithPullLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.myapplicationdome.view.recycler_leftslide.RecyclerViewMatchLeftSlide
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.example.myapplicationdome.view.recycler_leftslide.RecyclerViewMatchLeftSlide>
+</com.example.myapplicationdome.view.recycler_pull_upanddown.RelativeWithPullLayout>
+

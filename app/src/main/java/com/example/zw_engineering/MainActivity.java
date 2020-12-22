@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com._basebase.base.ui.view.MyCalendarView;
 import com.blankj.utilcode.util.JsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
@@ -31,11 +30,20 @@ public class MainActivity extends AppCompatActivity {
     private EditText name;      //kevin
     private EditText password;  //123456
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-        setContentView(new MyCalendarView(this));
+        setContentView(R.layout.activity_main);
+        findViewById(R.id.main_activity_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MyDomeActivity.class);
+                intent.putExtra("button","Main");
+                startActivity(intent);
+            }
+        });
+
 //        initView();
 //        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
 //                Manifest.permission.READ_EXTERNAL_STORAGE,

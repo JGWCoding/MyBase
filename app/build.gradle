@@ -71,6 +71,7 @@ dependencies {
 //    implementation 'org.greenrobot:greendao:3.2.2' // greendao数据库
     implementation 'com.blankj:utilcodex:1.26.0'
 //    implementation 'com.blankj:utilcode:1.26.0' //Utils
+    implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'//recycler adapter
 //    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3' //图片选择器 https://gitee.com/landiao_tb/PictureSelector
 //    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.4.6' //图片选择器
@@ -89,4 +90,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+}
+greendao {
+    schemaVersion 1 //当前数据库版本
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.myapplicationdome.view.recycler_leftslide.LeftSlideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#5f00">
+
+    <RelativeLayout
+        android:tag="content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5f00">
+
+        <TextView
+            android:id="@+id/channel_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:id="@+id/channel_delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_delete" />
+    </RelativeLayout>
+    <ImageView
+        android:tag="right"
+        android:background="@drawable/ic_arrow_up"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+</com.example.myapplicationdome.view.recycler_leftslide.LeftSlideLayout>
