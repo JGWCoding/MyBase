@@ -64,14 +64,14 @@ public class FloatingService extends Service {
          */
         @Override
         public void onShowPress(MotionEvent e) {
-            Log.e("MainActivity","onShowPress");
+            Log.e("DomeUse","onShowPress");
         }
         // 用户（轻触触摸屏后）松开，由一个1个MotionEvent ACTION_UP触发
         // 轻击一下屏幕，立刻抬起来，才会有这个触发
         // 从名子也可以看出,一次单独的轻击抬起操作,当然,如果除了Down以外还有其它操作,那就不再算是Single操作了,所以这个事件 就不再响应
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            Log.e("MainActivity","onSingleTapUp");
+            Log.e("DomeUse","onSingleTapUp");
             startScreenShot();
             mHandler.postDelayed(new Runnable() {
                 @Override
@@ -99,7 +99,7 @@ public class FloatingService extends Service {
         // 用户按下触摸屏，并拖动，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE触发
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            Log.e("MainActivity","onScroll");
+            Log.e("DomeUse","onScroll");
             return false;
         }
         // 用户长按触摸屏，由多个MotionEvent ACTION_DOWN触发
@@ -113,12 +113,12 @@ public class FloatingService extends Service {
                 mLayoutParams.height = 150;
             }
                 mWindowManager.updateViewLayout(mButton, mLayoutParams);
-            Log.e("MainActivity","onLongPress");
+            Log.e("DomeUse","onLongPress");
         }
         // 用户按下触摸屏、快速移动后松开，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE, 1个ACTION_UP触发
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Log.e("MainActivity","onFling");
+            Log.e("DomeUse","onFling");
             return false;
         }
 

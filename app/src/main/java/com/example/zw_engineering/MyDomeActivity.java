@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com._basebase.base.touchevent.DomeViewGroup;
 import com._basebase.base.ui.view.MyCalendarView;
-import com.blankj.utilcode.util.LogUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 

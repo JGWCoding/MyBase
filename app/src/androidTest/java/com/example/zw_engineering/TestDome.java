@@ -3,6 +3,8 @@ package com.example.zw_engineering;
 import android.os.Environment;
 import android.util.Log;
 
+import com._basebase.base.myeditcore.rxjava.DomeUse;
+
 import org.junit.Test;
 
 import java.io.File;
@@ -17,6 +19,8 @@ import java.io.Serializable;
 public class TestDome implements Serializable {
     @Test
     public void addition_isCorrect() throws Exception {
+//        new DomeUse().test();
+        new DomeUse().dome();
         System.out.println("My name is longyoung");
     }
 
