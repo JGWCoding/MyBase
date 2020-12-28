@@ -3,7 +3,7 @@ package com.example.zw_engineering;
 import android.os.Environment;
 import android.util.Log;
 
-import com._basebase.base.myeditcore.rxjava.DomeUse;
+import com._basebase.base.myeditcore.myhandler.DomeUse;
 
 import org.junit.Test;
 
@@ -20,7 +20,8 @@ public class TestDome implements Serializable {
     @Test
     public void addition_isCorrect() throws Exception {
 //        new DomeUse().test();
-        new DomeUse().dome();
+//        new DomeUse().dome();
+        new DomeUse().main(new String[]{});
         System.out.println("My name is longyoung");
     }
 
@@ -41,11 +42,13 @@ public class TestDome implements Serializable {
         out.close();
         in.close();
     }
+
     @Test
-    public  void test2() {
-        SyncUpload.addSync(MySyncUploadHandler.class,"我自己传的");
+    public void test2() {
+        SyncUpload.addSync(MySyncUploadHandler.class, "我自己传的");
     }
-    public static class MySyncUploadHandler implements SyncUpload.SyncUploadHandler,Serializable {
+
+    public static class MySyncUploadHandler implements SyncUpload.SyncUploadHandler, Serializable {
         @Override
         public boolean syncUpload(Object obj) {
             Log.e("mytag", "syncUpload 开始上传 " + obj);
@@ -78,7 +81,7 @@ public class TestDome implements Serializable {
                         SyncUploadHandler syncUploadHandler = handler.newInstance();
                         boolean upload = syncUploadHandler.syncUpload(obj);
                         //TODO 成功进行删除,不成功进行下次上传
-                        if (upload){
+                        if (upload) {
 
                         }
                     } catch (Exception e) {
