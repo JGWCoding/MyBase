@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home2Activity" />
-
+        <activity android:name=".ItemDragUseActivity" />
         <service
             android:name=".FloatingService"
             android:enabled="true"
