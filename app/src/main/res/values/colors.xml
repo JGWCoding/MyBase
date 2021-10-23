@@ -13,4 +13,10 @@
     <color name="yellow">#F49200</color>
     <color name="red">#DDE91F1F</color>
     <color name="yellow_aplah33">#C7EDCC</color>
+
+
+    <color name="setting_text_black_10">#25000000</color>
+    <color name="d_1a">#fff</color>
+    <color name="t_1a">#fff</color>
+
 </resources>

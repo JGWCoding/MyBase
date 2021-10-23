@@ -29,8 +29,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
-    <array name="default_array" >
+    <array name="default_array">
         <item>asdfasd1</item>
         <item>asdfasd</item>
         <item>asdfasd</item>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <com.example.zw_engineering.activity.MySeekBar
+        android:id="@+id/setting_item_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:maxHeight="5dp"
+        android:minHeight="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbar_setting"
+        android:thumb="@drawable/thumb_setting"
+        android:thumbOffset="0dp" />
+
+    <com.example.zw_engineering.activity.MySeekBar
+        android:layout_marginTop="@dimen/dp_40"
+        android:id="@+id/setting_item_seekbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:maxHeight="5dp"
+        android:minHeight="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbar_setting"
+        android:thumb="@drawable/thumb_setting"
+        android:thumbOffset="0dp" />
+
+    <com.example.zw_engineering.activity.MyCardView
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:elevation="0dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/dp_40" />
+</LinearLayout>

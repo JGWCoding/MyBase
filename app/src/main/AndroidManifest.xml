@@ -26,15 +26,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MyDomeActivity">
+        <activity android:name=".activity.ActivityC"></activity>
+        <activity android:name=".activity.ActivityB" />
+        <activity android:name=".activity.ActivityA" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MyDomeActivity">
+
+        </activity>
         <activity android:name=".Home2Activity" />
         <activity android:name=".ItemDragUseActivity" />
+
         <service
             android:name=".FloatingService"
             android:enabled="true"
@@ -67,10 +73,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-
-        </activity>
-        <!-- //自己定义的authority my.fileprovider -->
+            tools:ignore="LockedOrientationActivity" /> <!-- //自己定义的authority my.fileprovider -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="my.fileprovider"
