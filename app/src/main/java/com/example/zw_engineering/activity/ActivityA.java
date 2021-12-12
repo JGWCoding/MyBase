@@ -14,7 +14,7 @@ public class ActivityA extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity);
+        setContentView(R.layout.activity_dome);
 
 //        findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
 //            @Override
