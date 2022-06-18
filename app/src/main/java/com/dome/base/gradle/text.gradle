@@ -1,0 +1,320 @@
+package com.dome.base.gradle
+//链接：https://www.jianshu.com/p/209ac5b9c344
+//来源：简书
+
+//根项目的gradle 整个项目的gradle配置文件
+apply from: "config.gradle"  //这里可以引用自己定义的后缀为.gradle的文件  ,可以将所有的配置信息提取到自定义gradle
+
+buildscript {
+    //远程maven Google   jcenter jitpack   连接所需引用的服务器
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        //gradle 插件引用  内有关于项目编译构建....的任务
+        classpath 'com.android.tools.build:gradle:3.4.1'
+    }
+}
+
+//配置所有modle的引用服务器
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+
+}
+
+//清除任务
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+//app module的配置
+
+//标明此module可运行,,其他会有libary....
+apply plugin: 'com.android.application'
+
+ext.buildProperty = null
+def loadProperties() {
+    def proFile = file("../gradle.properties")
+    Properties p = new Properties()
+    proFile.withInputStream { stream -> p.load(stream) }
+    buildProperty = p
+}
+//一般用来加载gradle.properties 属性 用法例如:配置zipAlignEnabled Boolean.parseBoolean(buildProperty.debug_zipAlignEnabled)
+
+//定义时间
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion//编译版本
+    buildToolsVersion rootProject.ext.android.buildToolsVersion //编译时使用的构建工具的版本
+
+
+    defaultConfig {
+        //项目包名
+        applicationId rootProject.ext.android.applicationId
+        //最小可运行的sdk B版本
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        //目标版本
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        //版本号
+        versionCode rootProject.ext.android.versionCode
+        //版本名
+        versionName rootProject.ext.android.versionName
+        //开启分包
+        multiDexEnabled true
+        //junit单元测试
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //中文资源
+        resConfigs 'en'
+        //ndk 配置
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a'//,'x86_64', 'arm64-v8a'
+        }
+        //只使用xhdpi 下的资源文件
+        resConfigs "xhdpi"
+        //分包，指定某个类在main dex
+        multiDexEnabled true
+        multiDexKeepProguard file('multiDexKeep.pro') // 打包到main dex的这些类的混淆规制，没特殊需求就给个空文件
+        multiDexKeepFile file('maindexlist.txt') // 指定哪些类要放到main dex
+    }
+    //开启databind支持
+    dataBinding {
+        enabled = true
+    }
+    //签名信息
+    signingConfigs {
+        production {
+            //签名文件路径
+            storeFile rootProject.ext.signing.storeFile
+            //密码
+            storePassword rootProject.ext.signing.storePassword
+            //别名
+            keyAlias rootProject.ext.signing.keyAlias
+            //别名密码
+            keyPassword rootProject.ext.signing.keyPassword
+        }
+    }
+
+    //构建类型
+    buildTypes {
+        //debug模式
+        debug {
+            //可以版本名称后面追加相关信息
+            versionNameSuffix "-debug"
+            //包名添加后缀 可以控制不同构建类型不同的包名
+            applicationIdSuffix ".debug"
+            //自定义资源信息相当于value 下的String.xml里的内容   debug环境下 定义响应的项目名称
+            resValue "string", "app_name", rootProject.ext.android.debugAppName
+            //manifest 参数配置项目图标  debug环境下的桌面图标显示 在 manifest 清单文件中引用
+            manifestPlaceholders = [app_icon: rootProject.ext.android.debugAppIcon]
+            //配置签名信息
+            signingConfig signingConfigs.production
+            //是否开启混淆
+            minifyEnabled false
+            //对齐优打包的apk
+            zipAlignEnabled false
+            //去除无用资源
+            shrinkResources false
+            //混淆文件路径
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //开启这个可以debug调试
+            debuggable true
+            //自定义参数 在 Buildconfig使用   这里不同的环境定义不同的url
+            buildConfigField("String", "API_URL", rootProject.ext.apiUrl.debugUrl)
+        }
+        //预上线
+        preRelease {
+            resValue "string", "app_name", rootProject.ext.android.preReleaseAppName
+            manifestPlaceholders = [app_icon: rootProject.ext.android.preReleaseAppIcon]
+            zipAlignEnabled true
+            shrinkResources true
+            versionNameSuffix "-preRelease"
+            applicationIdSuffix ".preRelease"
+            signingConfig signingConfigs.production
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_URL", rootProject.ext.apiUrl.preRelease)
+
+        }
+        //线上正式
+        release {
+            resValue "string", "app_name", rootProject.ext.android.releaseAppName
+            manifestPlaceholders = [app_icon: rootProject.ext.android.releaseAppIcon]
+            zipAlignEnabled true
+            shrinkResources true
+
+            signingConfig signingConfigs.production
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_URL", rootProject.ext.apiUrl.release)
+
+        }
+
+        //修改apk包名
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                outputFileName = "app-${variant.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}.apk"
+            }
+        }
+    }
+
+    //jdk 配置
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//lib包配置
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    // 多渠道/多环境 的不同配置
+    flavorDimensions("default")
+    productFlavors {
+        qudao1 {
+            dimension "default"
+            //自定义项目名称
+            resValue "string", "app_name", "渠道1"
+            //自定义参数  在BUildConfig 里调用
+            buildConfigField("String", "orgId", '""')
+        }
+        qudao2 {
+            dimension "default"
+            resValue "string", "app_name", "渠道2"
+            buildConfigField("String", "orgId", rootProject.ext.channel.csOrgId)
+        }
+
+    }
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    //文件重复
+    packagingOptions {
+        exclude 'lib/arm64-v8a/ffmpeg.so'
+    }
+
+    //混淆对应文件输出
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (variant.getBuildType().isMinifyEnabled()) {
+                variant.assemble.doLast{
+                    copy {
+                        from variant.mappingFile
+                        into "${projectDir}/mappings"
+                        rename { String fileName ->
+                            "mapping-${variant.name}.txt"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+configurations {
+    //编译期排除commons模块
+    compile.exclude module: 'commons'
+    //在整个构建过程中排除com.squareup.retrofit2：adapter-rxjava
+    all*.exclude group: 'com.squareup.retrofit2', module: 'adapter-rxjava'
+}
+//全局强制使用
+configurations.all {
+    resolutionStrategy {
+        force 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    }
+}
+dependencies {
+//lib jar 引用
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //动态版本号
+    implementation 'com.android.support.constraint:constraint-layout:+'
+    implementation project(path: ':utilslib')
+
+    //重复引用问题
+    compile ('com.squareup.retrofit2:adapter-rxjava:2.1.0'){
+        // 冲突时优先使用该版本
+        force = true
+
+        // 依据构建名称排除
+        exclude module: 'rxjava'
+        // 依据组织名称排除
+        exclude group: 'com.squareup.retrofit'
+        // 依据组织名称+构件名称排除
+        exclude group: 'com.squareup.retrofit', module: 'rxjava'
+
+        // 为本依赖关闭依赖传递特性
+        transitive = false
+    }
+
+}
+
+//自定义gradle
+ext {
+
+    apiUrl = [
+
+            releaseUrl   : '"http://www.baidu.com/"',
+            preReleaseUrl: '"http://www.baidu.com/"',
+            debugUrl     : '"http://www.baidu.com/"',
+    ]
+    appKey = [
+            buglyAppId: '"4a8eea659f"'
+    ]
+    signing = [
+            storeFile    : file("./app/jks/key.jks"),
+            storePassword: "123456",
+            keyAlias     : "news",
+            keyPassword  : "123456"
+    ]
+    android = [
+            applicationId    : "com.ll.ll",
+            compileSdkVersion: 28,
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
+
+            debugAppName     : "应用预览版",
+            releaseAppName   : "应用正式版",
+            preReleaseAppName: "预上线版本",
+            debugAppIcon     : "@mipmap/ic_launcher_round",
+            releaseAppIcon   : "@mipmap/ic_launcher",
+            preReleaseAppIcon: "@mipmap/ic_launcher",
+
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+
+
+    libsVersion = [
+            supportLibraryVersion = "28.0.0",
+    ]
+
+
+    dependencies = [
+            //support
+            appcompat_v7: "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion",
+            design      : "com.android.support:design:$rootProject.supportLibraryVersion",
+//            recyclerview_v7: "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion",
+//            cardview_v7    : "com.android.support:cardview-v7:$rootProject.supportLibraryVersion",
+
+
+    ]
+
+
+}
+
+
