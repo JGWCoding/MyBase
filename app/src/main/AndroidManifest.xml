@@ -43,10 +43,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--添加支持shortcuts-->
+            <!--添加支持shortcuts shortcuts_dynamic 这个是gradle动态设置applicationId-->
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="@xml/shortcuts_dynamic" />
         </activity>
         <activity android:name=".MyDomeActivity"/>
         <activity android:name=".Home2Activity" />

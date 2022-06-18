@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 这个  targetPackage   gradle动态设置applicationId 不要自己添加  -->
+<!--    这个可以使用action配置就不用配置applicationId-->
     <shortcut
         android:icon="@mipmap/ic_launcher"
         android:shortcutId="add_website"
@@ -11,8 +13,7 @@
         <!--添加到桌面显示的文字-->
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.dome.base.shortcut.ShortDome1Activity"
-            android:targetPackage="com.example.zw_engineering" />
+            android:targetClass="com.dome.base.shortcut.ShortDome1Activity"/>
         <!--第一个是意图标识-->
         <!--第二个参数是希望打开的界面-->
         <!--希望打开界面的包名   这里需要注意的是：如果包名和applicationId不一样需要配置 applicationId -->
@@ -42,13 +43,11 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.dome.base.shortcut.ShortDome1Activity"
-            android:targetPackage="com.example.zw_engineering" />
+            android:targetClass="com.dome.base.shortcut.ShortDome1Activity" />
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.dome.base.shortcut.ShortDome2Activity"
-            android:targetPackage="com.example.zw_engineering" />
+            android:targetClass="com.dome.base.shortcut.ShortDome2Activity"/>
         <!--
         这里配置两个intent,会打开第2个intent的activity,当第二个activity返回会启动第一个intent
         -->
