@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="add_website"
+        android:shortcutLongLabel="@string/app_name"
+        android:shortcutShortLabel="@string/app_name">
+        <!--最左侧或者添加桌面后显示的图标-->
+        <!--id标识-->
+        <!--长按显示的文字  shortcutLongLabel shortcutShortLabel 不可以直接写字符串,不然会报错  -->
+        <!--添加到桌面显示的文字-->
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.dome.base.shortcut.ShortDome1Activity"
+            android:targetPackage="com.example.zw_engineering" />
+        <!--第一个是意图标识-->
+        <!--第二个参数是希望打开的界面-->
+        <!--希望打开界面的包名   这里需要注意的是：如果包名和applicationId不一样需要配置 applicationId -->
+        <categories android:name="android.shortcut.conversation" />
+        <!--官方给的,固定写法-->
+    </shortcut>
+    <shortcut
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="add_website2"
+        android:shortcutLongLabel="@string/dome"
+        android:shortcutShortLabel="@string/dome">
+
+        <intent android:action="ccom.dome.base.shortcut.ShortDome2Activity" />
+        <!--
+        这里也可以只配置action，不填写targetClass和targetPackage
+        但是需要 对应的类需要配置<category android:name="android.intent.category.DEFAULT"/>
+         <action android:name="com.dome.base.shortcut.ShortDome2Activity"/>
+         实测在OPPO机型可以,在小米k50不行
+        -->
+        <categories android:name="android.shortcut.conversation" />
+
+    </shortcut>
+    <shortcut
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="add_website3"
+        android:shortcutLongLabel="@string/dome"
+        android:shortcutShortLabel="@string/dome">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.dome.base.shortcut.ShortDome1Activity"
+            android:targetPackage="com.example.zw_engineering" />
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.dome.base.shortcut.ShortDome2Activity"
+            android:targetPackage="com.example.zw_engineering" />
+        <!--
+        这里配置两个intent,会打开第2个intent的activity,当第二个activity返回会启动第一个intent
+        -->
+        <categories android:name="android.shortcut.conversation" />
+
+    </shortcut>
+</shortcuts>

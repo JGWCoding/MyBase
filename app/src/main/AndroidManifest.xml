@@ -26,18 +26,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ActivityC"></activity>
+        <activity android:name="com.dome.base.shortcut.ShortDome1Activity"/>
+        <activity android:name="com.dome.base.shortcut.ShortDome2Activity">
+            <intent-filter>
+                <action android:name="com.dome.base.shortcut.ShortDome2Activity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ActivityC" />
         <activity android:name=".activity.ActivityB" />
-        <activity android:name=".activity.ActivityA" android:launchMode="singleTask">
+        <activity
+            android:name=".activity.ActivityA"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--添加支持shortcuts-->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
-        <activity android:name=".MyDomeActivity">
-
-        </activity>
+        <activity android:name=".MyDomeActivity"/>
         <activity android:name=".Home2Activity" />
         <activity android:name=".ItemDragUseActivity" />
 
