@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "dimensionName"
     }
 
     lintOptions {
@@ -37,6 +38,10 @@ android {
     }
     applicationVariants.all { variant ->
         variant.outputs.all { output ->    //以前的each改为all
+            //改xml文件
+//            output.processResources.doFirst {
+//                replaceInShortcuts(variant, 'targetPackageApplicationID',variant.applicationId)
+//            }
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 def fileName = "engineering_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk"
@@ -54,6 +59,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             aaptOptions.cruncherEnabled = false
             aaptOptions.useNewCruncher = false
+        }
+    }
+    //多渠道打包配置
+    productFlavors {
+        productA {
+            applicationId "com.example.zw_engineering"
+            resValue("string","shortcutTargetPackage","${applicationId}")
+        }
+        productB {
+            resValue("string","shortcutTargetPackage","${applicationId}")
         }
     }
 }
@@ -95,4 +110,50 @@ dependencies {
 }
 greendao {
     schemaVersion 1 //当前数据库版本
+}
+
+
+
+
+
+def replaceInShortcutsTest(variant, fromString, toString) {
+    def flavor = variant.productFlavors.get(0)
+    def buildType = variant.buildType
+    def shortcutsFile = "$buildDir/intermediates/res/merged/${flavor.name}/${buildType.name}/xml/shortcuts.xml"
+    def file = new File(shortcutsFile);
+    def updatedContent = file.getText('UTF-8').replaceAll(fromString, toString)
+    file.write(updatedContent, 'UTF-8')
+}
+//测试改xml文件,发现不行
+def replaceInShortcuts(variant, fromString, toString) {
+    def flavor = variant.productFlavors.get(0)
+    def buildType = variant.buildType
+    def shortcutsFile = "$buildDir/intermediates/res/merged/${flavor.name}/${buildType.name}/xml_shortcuts.xml.flat"
+    def file = new File(shortcutsFile)
+    println  "replaceInShortcuts start"
+    fileWrite(shortcutsFile,fileReader(shortcutsFile,fromString,toString))
+    println  "replaceInShortcuts finish"
+}
+//写文件
+def fileWrite(path, stringBuffer) {
+    new File(path).withWriter('UTF-8') {
+        within ->
+            within.append(stringBuffer)
+    }
+}
+//读取文件并替换字符串 并完整返回字符串
+def fileReader(path, oldStr, newStr) {
+    def readerString = "";
+    new File(path).withReader('UTF-8') { reader ->
+        reader.eachLine {
+            if (it.find(oldStr)) {
+                println  "找到并替换字符串"
+                println  oldStr
+                it = it.replace(oldStr, newStr)
+            }
+            readerString <<= it
+            readerString << '\n'
+        }
+        return readerString
+    }
 }
